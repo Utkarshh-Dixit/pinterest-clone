@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const plm = require('passport-local-mongoose');
+
+
 
 mongoose.connect("mongodb://127.0.0.1:27017/pinterestclone");
 
@@ -9,8 +12,7 @@ const userSchema = mongoose.Schema({
     unique: true,
   },
   password: {
-    type: String,
-    required: true,
+    type: String
   },
   posts: [{
     type: mongoose.Schema.Types.ObjectId,
@@ -21,14 +23,15 @@ const userSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
+    // required: true,
     unique: true,
   },
   fullName: {
     type: String,
-    required: true,
+    // required: true,
   },
 });
 
+userSchema.plugin(plm);
 module.exports = mongoose.model('User', userSchema);
 
