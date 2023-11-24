@@ -31,24 +31,24 @@ router.get('/feed', function(req, res){
 });
 
 router.get('/profile', isLoggedIn, function(req, res){
-  res.send("Welcome to the profile");
+  res.render('profile');
 })
 
 router.post('/login', passport.authenticate("local", {
   successRedirect: "/profile",
-  failureRedirect: "/"
+  failureRedirect: "/login"
 }), function(req, res){});
 
 router.get("/logout", function(req, res){
   req.logout(function(err) {
     if (err) { return next(err); }
-    res.redirect('/');
+    res.redirect('/login');
   });
 });
 
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()) return next();
-  res.redirect("/");
+  res.redirect("/login");
 }
 
 // router.get('/createuser', async function(req, res, next){
