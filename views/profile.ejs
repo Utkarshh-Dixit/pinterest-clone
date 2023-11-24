@@ -18,18 +18,28 @@
           <p class="tagline">Some tagline</p>
           <p class="description">Some description</p>
           <a href="/logout" class="button">Logout</a>
+          <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="text" name="filecaption" placeholder="Caption here">
+            <input type="file" name="file">
+            <button type="submit">Upload</button>
+          </form>
         </div>
     </div>
 
     <div class="container">
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://media.licdn.com/dms/image/C4E03AQE7wNWuV5snoA/profile-displayphoto-shrink_800_800/0/1616173561019?e=2147483647&v=beta&t=sXE98lMnFrAzFPjo6ewUt1TS-3tv1OVzdQlfjBNkPxw" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="cardflex">
+            <% user.posts.forEach(function(post){ %>
+
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="/images/uploads/<%=post.image%>" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text"><%=post.postText%></p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            <% })%>
         </div>
-      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

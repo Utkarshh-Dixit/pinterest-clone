@@ -11,6 +11,13 @@ body {
     padding: 20px;
   }
   
+  .cardflex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: start;
+  }
+
   .cardabc {
     background-color: #fff;
     border-radius: 5px;

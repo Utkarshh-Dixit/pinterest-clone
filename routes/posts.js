@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const postSchema = new mongoose.Schema({
   postText: {
     type: String,
-    required: true,
+    // required: true,
+  },
+  image: {
+    type: String
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
