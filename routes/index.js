@@ -24,7 +24,11 @@ router.post('/register', function(req, res){
 
 router.get('/login', function(req, res){
   res.render('login');
-})
+});
+
+router.get('/feed', function(req, res){
+  res.render('feed');
+});
 
 router.get('/profile', isLoggedIn, function(req, res){
   res.send("Welcome to the profile");
