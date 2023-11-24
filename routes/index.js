@@ -28,8 +28,10 @@ router.get('/login', function(req, res){
   res.render('login', {error: req.flash('error')});
 });
 
-router.get('/feed', function(req, res){
-  res.render('feed');
+router.get('/feed', async function(req, res){
+  const post = await postModel.find();
+  // console.log(post);
+  res.render('feed', {post});
 });
 
 router.post('/upload', isLoggedIn, upload.single('file'), async function(req, res){
