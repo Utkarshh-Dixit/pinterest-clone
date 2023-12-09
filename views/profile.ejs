@@ -9,20 +9,28 @@
 </head>
 <body>
     <div class="containerabc">
-        <div class="cardabc">
-          <div class="profile-picture">
-            <img src="https://media.licdn.com/dms/image/C4E03AQE7wNWuV5snoA/profile-displayphoto-shrink_800_800/0/1616173561019?e=2147483647&v=beta&t=sXE98lMnFrAzFPjo6ewUt1TS-3tv1OVzdQlfjBNkPxw" alt="Profile Picture">
-          </div>
+      <div class="cardabc">
+        <div class="profile-picture">
+          <img src="/images/uploads/<%=user.dp%>" alt="Profile Picture">
+          <%=user.dp%>
+        </div>
+        <!-- <%=user.dp%> -->
+  <form action="/change-profile-photo/<%=user._id%>" method="post" enctype="multipart/form-data">
+    <input type="file" name="dp" accept="image/*">
+    <button type="submit">Change Photo</button>
+  </form>
+        <a class="btn btn-warning" href="/feed">Go to the feed</a>
           <h2 class="name"><%=user.fullname%></h2>
           <h3 class="username"><%=user.username%></h3>
           <p class="tagline">Some tagline</p>
           <p class="description">Some description</p>
-          <a href="/logout" class="button">Logout</a>
-          <form action="/upload" method="post" enctype="multipart/form-data">
+          <a href="/logout" class="btn btn-danger">Logout</a>
+          <!-- <form class="uploadhai" action="/upload" method="post" enctype="multipart/form-data">
             <input type="text" name="filecaption" placeholder="Caption here">
             <input type="file" name="file">
-            <button type="submit">Upload</button>
-          </form>
+            <button class="btn btn-success" type="submit">Upload</button>
+          </form> -->
+          <a class="btn btn-success" href="/uperload">Upload a post</a>
         </div>
     </div>
 
@@ -33,9 +41,15 @@
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="/images/uploads/<%=post.image%>" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text"><%=post.postText%></p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                      <h5 class="card-title"><%=post.postText%></h5>
+                      <!-- <h5 class="card-title">Card title</h5>
+                      <p class="card-text"><%=post.postText%></p> -->
+                      <div class="delbut">
+                      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                      <form action="/delete-post/<%= post._id %>" method="POST">
+                        <button class="btn btn-danger" type="submit">Delete Post</button>
+                      </form>
+                    </div>
                     </div>
                   </div>
             <% })%>

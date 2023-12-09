@@ -17,6 +17,14 @@
   column-gap: 20px;
   
 }
+
+.gopro{
+	color: black;
+	background-color: aquamarine;
+	align-self: center;
+	font-size: xx-large;
+}
+
 .container .box
 {
   width: 100%;
