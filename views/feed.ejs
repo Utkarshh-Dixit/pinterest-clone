@@ -14,22 +14,12 @@
          
     <% post.forEach(async function(post){ %>
         <div class="box">
-                      <a href="ttps://oriontralelblog.com/wp-content/uploads/2019/08/IMG_6310.jpg" >
+                      <a href="/postDetails/<%= post._id %>" >
+
                       <img src="/images/uploads/<%=post.image%>" alt="image"></a>
                       <div class="caption">
                         <%=post.postText%>
-                        <!-- <a href="/feed/<%= post.user %>">User</a> -->
-                        <!-- <% try { %>
-                            <% const uid = post.user%>
-                            <% const postUser = await user.findOne({_id: uid}); %>
-                            <% if (postUser) { %>
-                                <p>Posted by: <%= postUser.username %></p>
-                            <% } else { %>
-                                <p>Unknown User</p>
-                            <% } %>
-                        <% } catch (error) { %>
-                            <p>Error fetching user: <%= error.message %></p>
-                        <% } %> -->
+                        
                     </div>
         </div> 
           

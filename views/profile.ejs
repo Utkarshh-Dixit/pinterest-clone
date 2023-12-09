@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/stylesheets/profile.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
 </head>
 <body>
     <div class="containerabc">
@@ -17,11 +18,11 @@
         <!-- <%=user.dp%> -->
   <form action="/change-profile-photo/<%=user._id%>" method="post" enctype="multipart/form-data">
     <input type="file" name="dp" accept="image/*">
-    <button type="submit">Change Photo</button>
+    <button type="submit">Update Profile photo</button>
   </form>
-        <a class="btn btn-warning" href="/feed">Go to the feed</a>
-          <h2 class="name"><%=user.fullname%></h2>
-          <h3 class="username"><%=user.username%></h3>
+        <a class="btn btn-warning" style="margin: 4px; border-radius: 10px;" href="/feed">Go to the feed</a>
+          <h2 class="name"><%=user.fullname%> (<%=user.username%>)</h2>
+          <h3 class="username"></h3>
           <p class="tagline">Some tagline</p>
           <p class="description">Some description</p>
           <a href="/logout" class="btn btn-danger">Logout</a>

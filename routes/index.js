@@ -65,7 +65,7 @@ router.post('/change-profile-photo/:userId', upload.single('dp'), async (req, re
   try {
     const userId = req.params.userId;
     const profilePhotoPath = req.file.filename;
-    console.log(profilePhotoPath);
+    // console.log(profilePhotoPath);
     // Update user's profile photo in MongoDB
     const user = await userModel.findByIdAndUpdate(userId, { dp: profilePhotoPath });
    
@@ -144,6 +144,24 @@ function isLoggedIn(req, res, next){
   res.redirect("/login");
 }
 
+router.get('/postDetails/:postId', async (req, res) => {
+  const postId = req.params.postId;
+
+  try {
+    // Retrieve the post details from the database based on postId
+    const post = await postModel.findOne({_id: postId});
+
+    if (!post) {
+      return res.status(404).render('error', { message: 'Post not found' });
+    }
+
+    res.render('postDetails', { post });
+  } catch (error) {
+    console.error('Error retrieving post details:', error.message);
+    res.status(500).render('error', { message: 'Internal Server Error' });
+  }
+});
+
 router.post('/delete-post/:postId', async (req, res) => {
   const postId = req.params.postId;
 
@@ -155,7 +173,11 @@ router.post('/delete-post/:postId', async (req, res) => {
     if (!deletedPost) {
       return res.status(404).json({ message: 'Post not found' });
     }
-
+    
+    await userModel.updateMany(
+      { posts: postId },
+      { $pull: { posts: postId } }
+    );
     // Optionally, you can redirect to a different page or send a success message
     res.redirect('/profile'); // Replace with the appropriate URL
   } catch (error) {

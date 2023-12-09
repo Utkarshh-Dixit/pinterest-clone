@@ -25,6 +25,13 @@
 	font-size: xx-large;
 }
 
+.gopro:hover{
+	color: aquamarine;
+	background-color: black;
+	font-size: xx-large;
+	border-radius: 10px;
+}
+
 .container .box
 {
   width: 100%;

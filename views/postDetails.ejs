@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .backbut{
+            border: 2px solid black;
+            background-color: red;
+            color: white;
+            font-size: 30px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="post-details">
+        <img src="/images/uploads/<%= post.image %>" alt="Post Image">
+        <h2><%= post.postText %></h2>
+        <!-- Add other details you want to display -->
+      
+        <a class="backbut" href="/feed">Back to Feed</a>
+      </div>
+</body>
+</html>
