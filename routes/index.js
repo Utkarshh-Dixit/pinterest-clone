@@ -76,7 +76,8 @@ router.post('/change-profile-photo/:userId', upload.single('dp'), async (req, re
     res.redirect('/profile');
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send('Please upload a photo then try to update');
+    // res.render('/profile');
   }
 });
 

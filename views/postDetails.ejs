@@ -6,20 +6,29 @@
     <style>
         .backbut{
             border: 2px solid black;
+            margin: 10px;
             background-color: red;
             color: white;
             font-size: 30px;
+        }
+        .postIm{
+            margin-top: 10px;
+        }
+        *{
+            background-color: aqua;
         }
     </style>
     <title>Document</title>
 </head>
 <body>
     <div class="post-details">
-        <img src="/images/uploads/<%= post.image %>" alt="Post Image">
+        <div >
+        <a class="backbut" href="/feed">Back to Feed</a>
+    </div>
+        <img class="postIm" src="/images/uploads/<%= post.image %>" alt="Post Image">
         <h2><%= post.postText %></h2>
         <!-- Add other details you want to display -->
       
-        <a class="backbut" href="/feed">Back to Feed</a>
       </div>
 </body>
 </html>
